@@ -6,14 +6,6 @@ env: # Set the secret as an input
   docker_password: ${{ secrets.GITHUB_TOKEN }}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
-  rename:
-    runs-on: ubuntu-latest
-    steps:
-      - name: set lower case owner name
-        run: |
-          echo "docker_username=${OWNER,,}" >>${github.actor}
-        env:
-          OWNER: '${{ github.repository_owner }}'
   Clone-down:
     name: Clone down repo
     runs-on: ubuntu-latest
@@ -53,6 +45,9 @@ jobs:
       with:
         name: code
         path: .
+    - name: downcaseREPO
+      run: |
+        echo "docker_username=${github.actor,,}" >>${GITHUB_ENV}
     - name: build docker
       run: chmod +x ci/build-docker.sh && ci/build-docker.sh
     - name: push docker
