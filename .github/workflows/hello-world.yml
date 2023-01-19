@@ -8,7 +8,7 @@ env: # Set the secret as an input
 jobs:
   Clone-down:
     name: Clone down repo
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container: gradle:6-jdk11
     steps:
     - uses: actions/checkout@v3
