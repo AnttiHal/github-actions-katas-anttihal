@@ -45,9 +45,6 @@ jobs:
       with:
         name: code
         path: .
-    - name: downcaseREPO
-      run: |
-        echo "docker_username=${github.actor,,}" >>${GITHUB_ENV}
     - name: build docker
       run: chmod +x ci/build-docker.sh && ci/build-docker.sh
     - name: push docker
