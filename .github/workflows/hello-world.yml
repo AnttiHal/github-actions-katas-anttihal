@@ -2,7 +2,7 @@ name: Java CI
 on: push
 
 env: # Set the secret as an input
-  docker_username: ${{ github.actor.lowercase }}
+  docker_username: anttihal
   docker_password: ${{ secrets.GITHUB_TOKEN }}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
